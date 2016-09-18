@@ -1,0 +1,20 @@
+<p>
+  Task Manager Component
+</p>
+
+<div *ngFor="let task of tasks">
+  <input type="checkbox" #chkbox [checked]="task.completed"
+    (click)="setCompleted(task, chkbox.value)">
+   {{task.description}}
+  <a (click)="removeTask(task)">   (X)  </a>
+</div>
+
+<br/>
+<button *ngIf="tasks.length > 1" (click)="completeAllTasks()">
+  Complete All Tasks
+</button>
+
+<br/>
+<br/>
+<input type="text" #taskText (keyup)="doneTyping($event)">
+<button (click)="addTaskFromInput(taskText)"> Add Task</button>
